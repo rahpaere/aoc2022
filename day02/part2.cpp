@@ -1,48 +1,18 @@
-#include <algorithm>
-#include <bitset>
-#include <functional>
-#include <iomanip>
 #include <iostream>
-#include <iterator>
-#include <limits>
-#include <list>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <variant>
-#include <vector>
 
 using namespace std;
 
 int main() {
-	char other, self;
+	int score = 0;
 
-	int total = 0;
+	char other, self;
 	while (cin >> other >> self) {
 		other -= 'A';
+		self -= 'X';
 
-		int round = 0;
-
-		if (self == 'X') {
-			round = 0;
-			self = (other + 2) % 3;
-		} else if (self == 'Y') {
-			round = 3;
-			self = other;
-		} else {
-			round = 6;
-			self = (other + 1) % 3;
-		}
-
-		round += self + 1;
-
-		cout << round << endl;
-		total += round;
+		score += 3 * self;
+		score += (other + self + 2) % 3 + 1;
 	}
 
-	cout << endl << total << endl;
+	cout << score << endl;
 }
