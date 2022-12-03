@@ -35,7 +35,6 @@ int main() {
 		string misplaced;
 		set_intersection(sack.begin(), mid, mid, sack.end(), back_inserter(misplaced));
 		
-		cout << misplaced[0] << ' ' << priority(misplaced[0]) << endl;
 		sum += priority(misplaced[0]);
 	}
 

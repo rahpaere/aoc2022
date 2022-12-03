@@ -10,6 +10,7 @@
 #include <memory>
 #include <numeric>
 #include <queue>
+#include <ranges>
 #include <set>
 #include <sstream>
 #include <stack>
@@ -25,7 +26,7 @@ struct Group {
 istream &operator>>(istream &in, Group &g) {
 	for (auto &sack: g.elves) {
 		in >> sack;
-		sort(sack.begin(), sack.end());
+		ranges::sort(sack);
 	}
 	return in;
 }
@@ -35,15 +36,10 @@ int priority(char c) {
 }
 
 char common_item(const Group &g) {
-	string tmp;
-	set_intersection(g.elves[0].begin(), g.elves[0].end(),
-			 g.elves[1].begin(), g.elves[1].end(),
-			 back_inserter(tmp));
-	string common;
-	set_intersection(g.elves[2].begin(), g.elves[2].end(),
-			 tmp.begin(), tmp.end(),
-			 back_inserter(common));
-	return common[0];
+	string a, b;
+	ranges::set_intersection(g.elves[0], g.elves[1], back_inserter(a));
+	ranges::set_intersection(g.elves[2], a, back_inserter(b));
+	return b.front();
 }
 
 int main() {
@@ -51,7 +47,7 @@ int main() {
 	copy(istream_iterator<Group>(cin), {}, back_inserter(groups));
 
 	int sum = 0;
-	for (const auto &group: groups)
-		sum += priority(common_item(group));
+	for (auto i: groups | views::transform(common_item) | views::transform(priority))
+		sum += i;
 	cout << sum << endl;
 }
