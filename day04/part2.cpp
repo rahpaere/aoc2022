@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iostream>
 #include <iterator>
+#include <ranges>
 
 using namespace std;
 
@@ -31,5 +32,5 @@ bool overlaps(const Pair &p) {
 int main() {
 	vector<Pair> pairs;
 	copy(istream_iterator<Pair>(cin), {}, back_inserter(pairs));
-	cout << count_if(pairs.begin(), pairs.end(), overlaps) << endl;
+	cout << ranges::count_if(pairs, overlaps) << endl;
 }

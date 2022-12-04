@@ -1,4 +1,4 @@
-CPPFLAGS=-Wall -g -std=c++2a
+CPPFLAGS=-Wall -g -std=c++20
 
 all: part1 part2
 
