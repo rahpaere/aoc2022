@@ -1,20 +1,6 @@
 #include <algorithm>
-#include <bitset>
-#include <functional>
-#include <iomanip>
 #include <iostream>
 #include <iterator>
-#include <limits>
-#include <list>
-#include <map>
-#include <memory>
-#include <numeric>
-#include <queue>
-#include <set>
-#include <sstream>
-#include <stack>
-#include <variant>
-#include <vector>
 
 using namespace std;
 
@@ -38,17 +24,9 @@ istream &operator>>(istream &in, Pair &p) {
 	return in >> p.first >> comma >> p.other;
 }
 
-ostream &operator<<(ostream &out, const Assignment &a) {
-	return out << a.from << '-' << a.to;
-}
-
-ostream &operator<<(ostream &out, const Pair &p) {
-	return out << p.first << ',' << p.other;
-}
-
 bool contains(const Pair &p) {
-	return    (p.first.from >= p.other.from && p.first.to <= p.other.to)
-	       || (p.first.from <= p.other.from && p.first.to >= p.other.to);
+	return max(p.first.to, p.other.to) - min(p.first.from, p.other.from)
+		== max(p.first.to - p.first.from, p.other.to - p.other.from);
 }
 
 int main() {
