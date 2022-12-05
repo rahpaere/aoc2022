@@ -8,3 +8,4 @@ see what ranges can do.
 2. [Rock Paper Scissors](https://adventofcode.com/2022/day/2)
 3. [Rucksack Reorganization](https://adventofcode.com/2022/day/3)
 4. [Camp Cleanup](https://adventofcode.com/2022/day/4)
+4. [Supply Stacks](https://adventofcode.com/2022/day/5)
