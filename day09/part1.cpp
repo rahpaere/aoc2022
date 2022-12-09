@@ -28,10 +28,9 @@ int signum(int x) {
 
 void link(Point &tail, const Point &head) {
 	Point d = head - tail;
-	if (abs(d.x) > 1 || (abs(d.y) > 1 && abs(d.x) > 0))
-		tail.x += signum(d.x);
-	if (abs(d.y) > 1 || (abs(d.x) > 1 && abs(d.y) > 0))
-		tail.y += signum(d.y);
+	bool step = d.x * d.x + d.y * d.y > 2;
+	tail.x += step * signum(d.x);
+	tail.y += step * signum(d.y);
 }
 
 void step(Point &p, char direction) {
