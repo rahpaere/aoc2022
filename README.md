@@ -13,3 +13,4 @@ see what ranges can do.
 7. [No Space Left On Device](https://adventofcode.com/2022/day/7)
 8. [Treetop Tree House](https://adventofcode.com/2022/day/8)
 9. [Rope Bridge](https://adventofcode.com/2022/day/9)
+10. [Cathode-Ray Tube](https://adventofcode.com/2022/day/10)
