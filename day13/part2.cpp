@@ -100,8 +100,7 @@ int main() {
 	Packet div6 { vector<Packet> { Packet { vector<Packet> { Packet { 6 } } } } };
 	vector<Packet> packets { div2, div6 };
 	copy(istream_iterator<Packet>(cin), {}, back_inserter(packets));
-	sort(packets.begin(), packets.end());
-	auto i2 = find(packets.begin(), packets.end(), div2) - packets.begin() + 1;
-	auto i6 = find(packets.begin(), packets.end(), div6) - packets.begin() + 1;
-	cout << i2 * i6 << endl;
+	auto i2 = partition(packets.begin(), packets.end(), [&div2](const auto &x) { return x < div2; });
+	auto i6 = partition(i2, packets.end(), [&div6](const auto &x) { return x < div6; });
+	cout << (i2 - packets.begin() + 1) * (i6 - packets.begin() + 1) << endl;
 }
